@@ -28,7 +28,6 @@ public class ProjectInfoProducer {
                 new ProducerRecord<>("project-info",
                         projectInfo.getId(),
                         projectInfo);
-        RecordMetadata result = producer.send(producerRecord).get();
-        log.info("sussecc");
+        producer.send(producerRecord, new ProjectInfoProducerCallback()).get();
     }
 }
